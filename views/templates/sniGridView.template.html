@@ -1,0 +1,102 @@
+<div class="search-box">
+	Search : <input type="text" ng-model="searchText">
+</div>
+<table class ="s-table table" cellspacing="0" cellpadding="0">
+	<thead>
+		<th ng-repeat="column in columns">
+			<a class="sort-click" ng-click="sortColumn(column.property)">{{column.title}}</a>
+		</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="rowData in rows | offset: currentPage*itemsPerPage | limitTo: itemsPerPage | orderBy:sortType:sortReverse | filter:searchText">
+			<td data-label='{{column.title}}' ng-repeat="column in columns">
+				<span>{{rowData[column.property]}}</span>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<td colspan="{{columns.length}}" align="right">
+			<div class="pagination">
+				<button class="page" ng-click="prevPage()" ng-class="prevPageDisabled()" ng-disabled="prevPageDisabled() == 'disabled'">Prev</button>
+				<button class="page page-num" ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">{{n + 1}}</button>
+				<button class="page" ng-click="nextPage()" ng-class="nextPageDisabled()" ng-disabled="nextPageDisabled() == 'disabled'">Next</button>
+			</div>
+		</td>
+	</tfoot>
+</table>
+<style type="text/css">
+	.s-table .page {
+		float: left;
+		min-width: 30px;
+		border: none;
+		margin-right: 2px;
+	}
+
+	.s-table .page.active {
+		background: blue;
+		color: #fff;
+	}
+
+	.s-table .sort-click {
+		cursor: pointer;
+	}
+
+	.search-box{
+		text-align: right;
+    	margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	.s-table table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.s-table thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.s-table tr { border: 1px solid #ccc; }
+	
+	.s-table td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	.s-table td:before { 
+		/* Now like a table header */
+		position: relative;
+		/* Top/left values mimic padding */
+		/*top: 6px;
+		left: 6px;*/
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		font-weight: 700;
+	}
+	
+	/*
+	Label the data
+	*/
+	.s-table td:before { content: attr(data-label); }
+	
+	.s-table tfoot {
+		display: inline;
+	}
+}
+</style>

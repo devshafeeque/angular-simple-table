@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table Directive</title>
+	
+	<!-- Css Files -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<!-- Lib Files -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	
+	<!-- App Files -->
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/controllers/page1.controller.js"></script>
+	<script type="text/javascript" src="app/controllers/page2.controller.js"></script>
+	<script type="text/javascript" src="app/helpers/common.factory.js"></script>
+	<script type="text/javascript" src="app/directives/sniGridView.directive.js"></script>
+</head>
+<body ng-app="myApp">
+	<div class="container-fluid" ng-view></div>	
+</body>
+</html>
