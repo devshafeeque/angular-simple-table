@@ -10,7 +10,7 @@ app.filter('offset', function () {
 function sGrid($window) {
     var directive = {
     	bindToController: false,
-    	controller: sniGridCtrl,
+    	controller: sGridCtrl,
     	controllerAs: 'vm',
     	link: link,
     	templateUrl : "views/templates/sGrid.template.html",
@@ -129,6 +129,6 @@ function sGrid($window) {
     }
 }
 /* @ngInject */
-function sGrid () {
+function sGridCtrl () {
 	var vm = {};	
 }
