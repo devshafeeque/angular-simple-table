@@ -1,4 +1,4 @@
-app.directive('sniGridView', ['$window', sniGridView]);
+app.directive('sGrid', ['$window', sGrid]);
 app.filter('offset', function () {
 	return function (input, start) {
 		start = parseInt(start, 10);
@@ -7,13 +7,13 @@ app.filter('offset', function () {
 });
 
 /* @ngInject */ 
-function sniGridView($window) {
+function sGrid($window) {
     var directive = {
     	bindToController: false,
     	controller: sniGridCtrl,
     	controllerAs: 'vm',
     	link: link,
-    	templateUrl : "views/templates/sniGridView.template.html",
+    	templateUrl : "views/templates/sGrid.template.html",
     	restrict: 'E',
     	scope: {
     		columns : "=",
@@ -129,6 +129,6 @@ function sniGridView($window) {
     }
 }
 /* @ngInject */
-function sniGridCtrl () {
+function sGrid () {
 	var vm = {};	
 }
