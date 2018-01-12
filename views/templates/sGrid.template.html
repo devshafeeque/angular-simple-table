@@ -8,7 +8,7 @@
 		</th>
 	</thead>
 	<tbody>
-		<tr ng-repeat="rowData in rows | filter:searchText | offset: currentPage*itemsPerPage | limitTo: itemsPerPage | orderBy:sortType:sortReverse">
+		<tr ng-repeat="rowData in (rows | filter:searchText )  | offset: currentPage*itemsPerPage | limitTo: itemsPerPage | orderBy:sortType:sortReverse">
 			<td data-label='{{column.title}}' ng-repeat="column in columns">
 				<span>{{rowData[column.property]}}</span>
 			</td>
